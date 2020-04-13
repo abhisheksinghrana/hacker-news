@@ -1,13 +1,14 @@
 .news-list-item-section {
   padding: 4px;
   font-size: 0.85rem;
+  vertical-align: top;
 
   &:nth-child(even) { 
     background: #d6d5d5; 
   }
 
   .comments-count {
-    padding: 4px 10px;
+    padding: 0px 10px;
     text-align: center;
   }
 
@@ -23,7 +24,7 @@
       position: absolute;
       height: 10px;
       left: 7px;
-      bottom: 7px;
+      top: 5px;
       cursor: pointer;
     }
   }
@@ -45,6 +46,10 @@
       .by {
        color: #848886;
       }
+    }
+
+    .hide-btn {
+      cursor: pointer;
     }
   }
 }

@@ -10,6 +10,7 @@ export default class NewsListComponent extends Component {
         isLoading: PropTypes.bool.isRequired,
         fetchNews: PropTypes.func.isRequired,
         updateVotes: PropTypes.func.isRequired,
+        hideNews: PropTypes.func.isRequired
     };
 
     constructor(props) {
@@ -25,7 +26,7 @@ export default class NewsListComponent extends Component {
     }
 
     render() {
-        const { newsList, updateVotes } = this.props;
+        const { newsList, updateVotes, hideNews } = this.props;
 
         return (
             <Fragment>
@@ -38,6 +39,7 @@ export default class NewsListComponent extends Component {
                                     index={index}
                                     item={item}
                                     updateVotes={updateVotes}
+                                    hideNews={hideNews}
                                 />
                             ))}
                         </tbody>

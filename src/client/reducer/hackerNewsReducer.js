@@ -3,6 +3,7 @@ import {
     FETCH_NEWS_SUCCESS,
     FETCH_NEWS_ERROR,
     UPDATE_NEWS_VOTES,
+    HIDE_NEWS
 } from '../actions';
 import { setToLocalStorage, getFromLocalStorage } from '../services/utils';
 
@@ -61,6 +62,12 @@ export default (state = initialState(), action) => {
             return {
                 ...state,
                 newsList
+            };
+        case HIDE_NEWS:
+            return {
+                ...state,
+                error: action.payload.error,
+                isLoading: false,
             };
         default:
             return state;

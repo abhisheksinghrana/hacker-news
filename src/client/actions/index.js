@@ -4,6 +4,7 @@ export const FETCH_NEWS = 'FETCH_NEWS';
 export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
 export const FETCH_NEWS_ERROR = 'FETCH_NEWS_ERROR';
 export const UPDATE_NEWS_VOTES = 'UPDATE_NEWS_VOTES';
+export const HIDE_NEWS = 'HIDE_NEWS';
 
 import { getFromLocalStorage } from '../services/utils';
 
@@ -53,5 +54,10 @@ export const fetchHackerNews = pageNum => {
 
 export const updateVote = id => ({
     type: UPDATE_NEWS_VOTES,
+    payload: id,
+});
+
+export const hideNews = id => ({
+    type: HIDE_NEWS,
     payload: id,
 });
