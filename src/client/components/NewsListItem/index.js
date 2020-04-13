@@ -58,7 +58,7 @@ export default class NewsListItemComponent extends React.Component {
                 </td>
                 <td className="details">
                     <span className="title">{title || 'Title Unavailable'}</span>
-                    <span className="link-domain">({site})</span>
+                    <a className="link-domain" href={url} target="_blank">({site})</a>
                     <span className="author"><span className="by">by</span> {author}</span>
                     <span className="created">{timeSince(created_at)}</span>
                     <span className="hide-btn" onClick={this.hideNews}>[ hide ]</span>

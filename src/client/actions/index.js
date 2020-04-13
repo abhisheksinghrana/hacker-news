@@ -30,11 +30,25 @@ export const fetchHackerNews = pageNum => {
         return hackerNewsService.getHackerNews(pageNum)
             .then(news => {
                 const upvotedNews = getFromLocalStorage("upvotedNews");
-                if (upvotedNews && upvotedNews.length) {
+                const hiddenNews = getFromLocalStorage("hiddenNews");
+                if (hiddenNews && hiddenNews.length) {
+                    const tempHiddenObj = {}, tempHiddenArray = [];
+                    for (const item of hiddenNews) {
+                        tempHiddenObj[item.objectID] = item;
+                    }
+                    for (let index = 0; index < news.hits.length; index++) {
+                        if (!tempHiddenObj[news.hits[index]['objectID']]) {
+                            tempHiddenArray.push(news.hits[index]);
+                        }
+                    }
+                    news.hits = [...tempHiddenArray];
+                }
+                if ((upvotedNews && upvotedNews.length)) {
                     const tempObj = {};
                     for (const item of upvotedNews) {
                         tempObj[item.objectID] = item;
                     }
+
                     for (const item of news.hits) {
                         if (tempObj[item.objectID]) {
                             item.points = tempObj[item.objectID]['points'] || item.points;

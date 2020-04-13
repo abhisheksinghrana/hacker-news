@@ -64,10 +64,25 @@ export default (state = initialState(), action) => {
                 newsList
             };
         case HIDE_NEWS:
+            const temp = [...state.newsList];
+            if (state.newsList[action.payload]) {
+                const upvotedNews = getFromLocalStorage("hiddenNews");
+                if (upvotedNews && upvotedNews.length) {
+                    setToLocalStorage("hiddenNews", [...upvotedNews, state.newsList[action.payload]]);
+                } else {
+                    setToLocalStorage("hiddenNews", [state.newsList[action.payload]]);
+                }
+                let index = 0
+                for (; index < temp.length; index++) {
+                    if (temp[index].objectID === state.newsList[action.payload]['objectID']) {
+                        break;
+                    }
+                }
+                temp.splice(index, 1);
+            }
             return {
                 ...state,
-                error: action.payload.error,
-                isLoading: false,
+                ...{ newsList: temp }
             };
         default:
             return state;
