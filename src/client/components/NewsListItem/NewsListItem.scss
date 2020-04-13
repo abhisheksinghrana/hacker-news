@@ -1,0 +1,50 @@
+.news-list-item-section {
+  padding: 4px;
+  font-size: 0.85rem;
+
+  &:nth-child(even) { 
+    background: #d6d5d5; 
+  }
+
+  .comments-count {
+    padding: 4px 10px;
+    text-align: center;
+  }
+
+  .upvote-icon {
+    position: relative;
+    padding: 5px 10px;
+
+    .vote-arrow::after{
+      content: '';
+      background-image: url('../../../../assets/images/upvote.gif');
+      background-position: center;
+      width: 10px;
+      position: absolute;
+      height: 10px;
+      left: 7px;
+      bottom: 7px;
+      cursor: pointer;
+    }
+  }
+
+  .details{
+    >span {
+      padding: 0 5px;
+    }
+
+    .title {
+      font-size: 1rem;;
+    }
+
+    .link-domain, .created {
+      color: #848886;
+    }
+
+    .author{
+      .by {
+       color: #848886;
+      }
+    }
+  }
+}

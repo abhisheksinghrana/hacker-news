@@ -1,0 +1,12 @@
+.app-container {
+    background: #f6f6ef;
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+@media only screen and  (max-width: 768px) {
+    .app-container {
+        width: 96%;
+    }
+}
